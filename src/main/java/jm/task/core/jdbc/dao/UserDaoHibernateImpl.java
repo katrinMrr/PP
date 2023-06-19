@@ -32,13 +32,10 @@ public class UserDaoHibernateImpl implements UserDao {
                     .executeUpdate();
             transaction.commit();
         } catch (HibernateException e) {
-            try {
-                transaction.rollback();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+                e.printStackTrace();
             }
         }
-    }
+
 
 
     @Override
@@ -51,13 +48,9 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
             System.out.println("Таблица была удалена");
         } catch (HibernateException e) {
-            try {
-                transaction.rollback();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+                e.printStackTrace();
             }
         }
-    }
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
@@ -124,11 +117,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     .executeUpdate();
             transaction.commit();
         } catch (HibernateException e) {
-            try {
-                transaction.rollback();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+                e.printStackTrace();
             }
         }
     }
-}
